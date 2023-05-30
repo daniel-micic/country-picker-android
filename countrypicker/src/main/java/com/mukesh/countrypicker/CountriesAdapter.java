@@ -48,6 +48,8 @@ public class CountriesAdapter extends
     final Country country = countries.get(position);
     holder.countryNameText.setText(country.getName());
     holder.countryNameText.setTextColor(textColor == 0 ? Color.BLACK : textColor);
+    holder.countryPhoneText.setText(country.getDialCode());
+    holder.countryPhoneText.setTextColor(textColor == 0 ? Color.BLACK : textColor);
     country.loadFlagByCode(context);
     if (country.getFlag() != -1) {
       holder.countryFlagImageView.setImageResource(country.getFlag());
@@ -68,12 +70,14 @@ public class CountriesAdapter extends
   class ViewHolder extends RecyclerView.ViewHolder {
     private ImageView countryFlagImageView;
     private TextView countryNameText;
+    private TextView countryPhoneText;
     private LinearLayout rootView;
 
     ViewHolder(View itemView) {
       super(itemView);
       countryFlagImageView = itemView.findViewById(R.id.country_flag);
       countryNameText = itemView.findViewById(R.id.country_title);
+      countryPhoneText = itemView.findViewById(R.id.country_phone);
       rootView = itemView.findViewById(R.id.rootView);
     }
   }
