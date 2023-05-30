@@ -193,6 +193,7 @@ public class MainActivity extends AppCompatActivity implements OnCountryPickerLi
     builder.theme(themeSwitch.isChecked() ? CountryPicker.THEME_NEW : CountryPicker.THEME_OLD);
     builder.canSearch(searchSwitch.isChecked());
     builder.sortBy(sortBy);
+    builder.dialCode(true);
     countryPicker = builder.build();
     if (useBottomSheet.isChecked()) {
       countryPicker.showBottomSheet(MainActivity.this);

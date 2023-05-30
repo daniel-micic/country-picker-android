@@ -302,6 +302,7 @@ public class CountryPicker implements BottomSheetInteractionListener, LifecycleO
   private int sortBy = SORT_BY_NONE;
   private OnCountryPickerListener onCountryPickerListener;
   private boolean canSearch = true;
+  private boolean showDialCode = false;
 
   private List<Country> countries;
   private EditText searchEditText;
@@ -330,6 +331,7 @@ public class CountryPicker implements BottomSheetInteractionListener, LifecycleO
     style = builder.style;
     context = builder.context;
     canSearch = builder.canSearch;
+    showDialCode = builder.showDialCode;
     theme = builder.theme;
     countries = new ArrayList<>(Arrays.asList(COUNTRIES));
     sortCountries(countries);
@@ -443,7 +445,9 @@ public class CountryPicker implements BottomSheetInteractionListener, LifecycleO
             }
           }
         },
-        textColor);
+        textColor,
+        showDialCode
+    );
     countriesRecyclerView.setHasFixedSize(true);
     LinearLayoutManager layoutManager = new LinearLayoutManager(sheetView.getContext());
     layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -584,6 +588,7 @@ public class CountryPicker implements BottomSheetInteractionListener, LifecycleO
     private Context context;
     private int sortBy = SORT_BY_NONE;
     private boolean canSearch = true;
+    private boolean showDialCode = false;
     private OnCountryPickerListener onCountryPickerListener;
     private int style;
     private int theme = THEME_NEW;
@@ -610,6 +615,11 @@ public class CountryPicker implements BottomSheetInteractionListener, LifecycleO
 
     public Builder canSearch(@NonNull boolean canSearch) {
       this.canSearch = canSearch;
+      return this;
+    }
+
+    public Builder dialCode(@NonNull boolean showDialCode) {
+      this.showDialCode = showDialCode;
       return this;
     }
 
